@@ -21,7 +21,7 @@ Cadena::Cadena(int tam=0)
 Cadena::Cadena(char *nueva_cad)
 {
     int tam=strlen(nueva_cad);
-    cad = new char[tam];
+    cad = new char[tam+1];
     if(cad==NULL)
         {
         cout<<"Error: memoria no asignada."<<endl;
@@ -29,30 +29,32 @@ Cadena::Cadena(char *nueva_cad)
         return;
         }
     strcpy(cad,nueva_cad);
-    tamanio=tam;
+    tamanio=tam+1;
 }
 
 char* Cadena::getCadena()
 {
+    if(cad==NULL)
+    {
+        cerr<<"Error: Cadena sin memoria."<<endl;
+    }
     return cad;
 }
 
 void Cadena::setCadena(char *nueva_cadena)
 {
-    int tam=strlen(nueva_cadena);
-    if(tam<=tamanio)
+    if(nueva_cadena==NULL)
     {
-    strcpy(cad,nueva_cadena);
+        cerr<<"Error: cadena NULL."<<endl;
+        return;
     }
+        int tam=strlen(nueva_cadena);
 
-    else
-    {
-        for(int i=0;i<tamanio;i++)
+        for(int i=0;i<min(tamanio-1,tam);i++)
         {
             cad[i]=nueva_cadena[i];
         }
-        cad[tamanio]='\0';
-    }
+        cad[tamanio-1]='\0';
 }
 
 int Cadena::getLargo()

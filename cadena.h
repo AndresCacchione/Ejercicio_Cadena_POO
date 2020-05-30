@@ -7,14 +7,13 @@ class Cadena
     private:
         char *cad;
         int tamanio;
-
     public:
         Cadena(int);
         Cadena(char *);
         char* getCadena();
         int getLargo();
         void setCadena(char*);
-        virtual ~Cadena();
+        ~Cadena();
 };
 
 #endif // CADENA_H
