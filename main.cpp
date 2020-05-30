@@ -12,5 +12,6 @@ int main()
     cadena.setCadena("MUNDO");
     cout<<"El largo de la cadena es: "<<cadena.getLargo()<<endl;
     cout<< cadena.getCadena()<<endl;
+
     return 0;
 }
